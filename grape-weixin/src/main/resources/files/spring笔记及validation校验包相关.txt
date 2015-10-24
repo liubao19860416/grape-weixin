@@ -1,0 +1,34 @@
+<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+    		<!-- <version>1.0.0.GA</version> -->
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+		</dependency>
+
+
+
+		@InitBinder
+public void initBinder(DataBinder binder) {
+binder.setValidator(new UserValidator());
+}
+
+
+<bean id="User" class="spring.c.User">
+		<property name="name" value="liubao"></property>
+		<property name="password" value="lll"></property>
+		<!-- 当属性注入,构造方法注入和注解,同时存在的时候,先执行构造方法,
+		再执行注解,最后执行属性注入, 所以当他们3个都存在的时候,以属性注入为主 -->
+		<constructor-arg type="java.lang.String" name="name"
+			value="111"></constructor-arg>
+		<constructor-arg name="password" type="java.lang.String"
+			value="123"></constructor-arg>
+	</bean>
+
+
+
+
